@@ -24,7 +24,7 @@ pipeline {
         stage('Terraform Init') {
                     steps {
                        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-crendentails-chenna']]){
-                            dir('infra') {
+                            dir('Infrastructure') {
                             sh 'echo "=================Terraform Init=================="'
                             sh 'terraform init'
                         }
@@ -37,7 +37,7 @@ pipeline {
                 script {
                     if (params.PLAN_TERRAFORM) {
                        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-crendentails-chenna']]){
-                            dir('infra') {
+                            dir('Infrastructure') {
                                 sh 'echo "=================Terraform Plan=================="'
                                 sh 'terraform plan'
                             }
@@ -52,7 +52,7 @@ pipeline {
                 script {
                     if (params.APPLY_TERRAFORM) {
                        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-crendentails-chenna']]){
-                            dir('infra') {
+                            dir('Infrastructure') {
                                 sh 'echo "=================Terraform Apply=================="'
                                 sh 'terraform apply -auto-approve'
                             }
@@ -67,7 +67,7 @@ pipeline {
                 script {
                     if (params.DESTROY_TERRAFORM) {
                        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-crendentails-chenna']]){
-                            dir('infra') {
+                            dir('Infrastructure') {
                                 sh 'echo "=================Terraform Destroy=================="'
                                 sh 'terraform destroy -auto-approve'
                             }
