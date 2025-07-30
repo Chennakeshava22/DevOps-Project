@@ -46,7 +46,7 @@ variable "public_key" {
 variable "ec2_ami_id" {
   type        = string
   description = "DevOps Project 1 AMI Id for EC2 instance"
-  default = "ami-08a6efd148b1f7504"
+  default     = "ami-08a6efd148b1f7504"
 }
 
 variable "ec2_user_data_install_apache" {
