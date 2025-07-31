@@ -1,6 +1,9 @@
 pipeline {
     agent any
-
+      
+    environment {
+        AWS_REGION = 'us-east-1'  // Add your desired AWS region here
+    }
     parameters {
             booleanParam(name: 'PLAN_TERRAFORM', defaultValue: false, description: 'Check to plan Terraform changes')
             booleanParam(name: 'APPLY_TERRAFORM', defaultValue: false, description: 'Check to apply Terraform changes')
